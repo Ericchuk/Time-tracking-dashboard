@@ -1,5 +1,7 @@
 let xmlhttp = new XMLHttpRequest();
-let button = document.querySelector(".button1")
+let button = document.querySelector(".button1");
+let button1 = document.querySelector(".button2")
+let button2 = document.querySelector(".button3")
  xmlhttp.onload = function(){
     if(this.readyState == 4 && this.status == 200){
         // console.log(xmlhttp.responseText);
@@ -48,6 +50,50 @@ let button = document.querySelector(".button1")
         div2.appendChild(div3);
         // div2.appendChild
         section.appendChild(div2);
+ 
+        function daily(){
+            // section.style.display = "none"
+            button.style.color = "var(--white)"
+            button1.style.color = "var(--Pale-Blue);"
+            button2.style.color = "var(--Pale-Blue);"
+            divContent2.textContent = response[i].timeframes.daily.current;
+            p2.textContent = response[i].timeframes.daily.previous;
+            p.innerText = "Last Few Hours";
+            div3.textContent =  `${p.textContent} - ${p2.textContent}hrs`
+            divContent2.textContent = `${divContent2.textContent}hrs`;
+            console.log(response[i].timeframes.daily.previous);
+        }
+
+        
+        function weekly(){
+            // section.style.display = "none"
+            button1.style.color = "var(--white)"
+            button2.style.color = "var(--Pale-Blue)";
+            button.style.color = "var(--Pale-Blue)";
+            divContent2.textContent = response[i].timeframes.weekly.current;
+            p2.textContent = response[i].timeframes.weekly.previous;
+            p.innerText = "Last Week";
+            div3.textContent =  `${p.textContent} - ${p2.textContent}hrs`
+            divContent2.textContent = `${divContent2.textContent}hrs`;
+            console.log(response[i].timeframes.weekly.previous);
+        }
+
+        function monthly(){
+            // section.style.display = "none"
+            button2.style.color = "var(--white)"
+            button1.style.color = "var(--Pale-Blue)";
+            button.style.color = "var(--Pale-Blue)";
+            divContent2.textContent = response[i].timeframes.monthly.current;
+            p2.textContent = response[i].timeframes.monthly.previous;
+            p.innerText = "Last Month";
+            div3.textContent =  `${p.textContent} - ${p2.textContent}hrs`
+            divContent2.textContent = `${divContent2.textContent}hrs`;
+            console.log(response[i].timeframes.monthly.previous);
+        }
+
+        button.addEventListener("click", daily)
+        button1.addEventListener("click", weekly)
+        button2.addEventListener("click", monthly)
   }
  }
 };
